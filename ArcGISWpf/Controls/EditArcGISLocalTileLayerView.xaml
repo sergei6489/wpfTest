@@ -1,0 +1,30 @@
+﻿<dxdo:LayoutPanel  xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:esri="http://schemas.esri.com/arcgis/client/2009" 
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             x:Class="ArcGISWpf.Controls.EditArcGISLocalTileLayerView" 
+             mc:Ignorable="d" Caption="{Binding Path=BaseViewModel.Name}" Closed="{Binding IsClosed}" AllowRestore="False">
+    <Grid>
+        <dxb:ToolBarControl VerticalAlignment="Top">
+            <dxb:BarButtonItem Content="Сохранить" Command="{Binding SaveLayerCommand}" CommandParameter="{Binding}"/>
+            <dxb:BarItemSeparator/>
+            <dxb:BarButtonItem Content="Сбросить" Command="{Binding RefreshLayerCommand}" />
+            <dxb:BarItemSeparator/>
+            <dxb:BarButtonItem Content="Отменить" Command="{Binding CancelLayerCommand}" />
+        </dxb:ToolBarControl>
+        <Label Margin="4,28,0,0" HorizontalAlignment="Left" Width="96" Height="27" VerticalAlignment="Top" Content="Наименование"/>
+        <dxe:TextEdit Margin="112,28,0,0" Text="{Binding Path=ViewModel.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Width="372" Height="27" VerticalAlignment="Top" />
+        <Label Margin="7,67,0,0" Content="Путь:" HorizontalAlignment="Left" Width="56" Height="26" VerticalAlignment="Top"/>
+        <dxe:TextEdit Margin="113,66,0,0" Text="{Binding Path=ViewModel.Path}" HorizontalAlignment="Left" Width="285" Height="27" VerticalAlignment="Top" />
+        <dx:SimpleButton HorizontalAlignment="Left" Margin="403,66,0,0" VerticalAlignment="Top" Height="27" Width="81" Command="{Binding OpenFileDialogCommand}" Content="Выбрать"/>
+        <Label Content="{Binding Errors}" HorizontalAlignment="Right" Margin="0,106,456,92" Foreground="#FFAC0F0F" FontSize="14" RenderTransformOrigin="0.308,-2.021" />
+
+    </Grid>
+</dxdo:LayoutPanel>
+
